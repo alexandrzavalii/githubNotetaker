@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Profile from './Profile.js';
+
 import {
   StyleSheet,
   Text,
@@ -27,8 +29,13 @@ export default class Dashboard extends Component{
   }
 
   goToProfile(){
-
-  }
+          this.props.navigator.push({
+              component: Profile,
+              title: 'Profile Page',
+              passProps: {userInfo: this.props.userInfo}
+          })
+      }
+      
   goToRepos(){
 
   }
