@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Badge from './Badge.js';
 import Separator from './Helpers/Separator.js';
 import PropTypes from 'prop-types';
-
+import Web_View from './Helpers/WebView.js';
 import {
   StyleSheet,
   Text,
@@ -13,7 +13,11 @@ import {
 
 export default class Repositories extends Component{
   openPage(url){
-    console.log('the url is', url);
+    this.props.navigator.push({
+      component: Web_View,
+      title: 'Web View',
+      passProps: {url}
+    })
   }
   render(){
     const repos = this.props.repos;
@@ -29,6 +33,7 @@ export default class Repositories extends Component{
               </TouchableHighlight>
               <Text style={styles.stars}>Stars: {repos[index].stargazers_count} </Text>
               {desc}
+              <Separator/>
             </View>
           </View>
       )
